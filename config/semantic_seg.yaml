@@ -10,14 +10,14 @@ train:
       fix_prompt_en: True
       fix_mask_de: False
       ckpt_path: 'sam_ckpt/sam_vit_b_01ec64.pth'
-      class_num: 21 # 20 + 1
+      class_num: 1 # 20 + 1
       model_type: 'vit_b'    # type should be in [vit_h, vit_b, vit_l, default]
 
   # Dataset
   dataset:
     name: 'torch_voc_sem'
     params:
-      root: '/data/jinziqi/DATASETS/'
+      root: './data/segment-spine.v9i.coco-segmentation/'
       year: '2012'
       image_set: 'train'
     transforms:
@@ -57,7 +57,7 @@ train:
   runner_name: 'sem_runner'
   # Dataloader
   bs: 8 # 8
-  num_workers: 2
+  num_workers: 1
   drop_last: True
   # Logger
   use_tensorboard: True
@@ -70,9 +70,9 @@ val:
   dataset:
     name: 'torch_voc_sem'
     params:
-      root: '/data/jinziqi/DATASETS/'
+      root: './data/segment-spine.v9i.coco-segmentation/'
       year: '2012'
-      image_set: 'train'
+      image_set: 'val'
     transforms:
       resize:
         params:

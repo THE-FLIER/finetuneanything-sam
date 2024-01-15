@@ -2,12 +2,14 @@
 @copyright ziqi-jin
 '''
 import argparse
+import os
 from omegaconf import OmegaConf
 from torch.utils.data import DataLoader
 from datasets import get_dataset
 from losses import get_losses
 from extend_sam import get_model, get_optimizer, get_scheduler, get_opt_pamams, get_runner
 
+os.environ['CUDA_VISIBLE_DEVICES']='1'
 supported_tasks = ['detection', 'semantic_seg', 'instance_seg']
 parser = argparse.ArgumentParser()
 parser.add_argument('--task_name', default='semantic_seg', type=str)
